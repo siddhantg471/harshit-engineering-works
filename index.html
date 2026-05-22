@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harshit Engineering Works | Premium Rubber Mixing Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Industrial rubber mixer machines for polymer processing">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Firebase SDK -->
+  <script defer src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore-compat.js"></script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="font-sans bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-200 scroll-smooth">
+  <!-- Custom Cursor & Scroll Progress -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation -->
+  <header class="glass-panel dark:bg-slate-900/90 dark:border-slate-800 sticky top-0 z-50 animate-slide-in">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <svg class="w-8 h-8 text-primary mr-2 animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+        </svg>
+        <span class="text-xl font-bold text-primary">Harshit Engineering Works</span>
+      </div>
+      
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#home" class="font-medium hover:text-primary transition transform hover:scale-105">Home</a>
+        <a href="#products" class="font-medium hover:text-primary transition transform hover:scale-105">Products</a>
+        <a href="#features" class="font-medium hover:text-primary transition transform hover:scale-105">Features</a>
+        <a href="#testimonials" class="font-medium hover:text-primary transition transform hover:scale-105">Testimonials</a>
+        <a href="#contact" class="font-medium hover:text-primary transition transform hover:scale-105">Contact</a>
+        
+        <!-- User/Auth Buttons -->
+        <div id="authButtons" class="flex items-center space-x-4">
+          
+          <button id="themeToggleBtn" class="text-gray-700 dark:text-gray-300 dark:text-gray-300 hover:text-primary transition ml-4">
+            <i class="fas fa-moon inline dark:hidden text-xl"></i>
+            <i class="fas fa-sun hidden dark:inline text-xl text-secondary"></i>
+          </button>
+          <button id="loginBtn" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105 animate-pulse-slow">
+            <i class="fas fa-sign-in-alt mr-2"></i>Login
+          </button>
+          <button id="dashboardBtn" class="hidden bg-secondary text-gray-900 dark:text-white px-4 py-2 rounded-full hover:bg-yellow-500 transition transform hover:scale-105">
+            <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+          </button>
+          <button id="logoutBtn" class="hidden bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-900 transition transform hover:scale-105">
+            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+          </button>
+        </div>
+      </nav>
+      
+      <button id="mobileMenuBtn" class="md:hidden text-gray-700 dark:text-gray-300 hover:text-primary transition">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden fixed inset-0 bg-white dark:bg-slate-800 z-50 hidden transform transition-transform duration-300">
+    <div class="flex justify-between items-center p-4 border-b">
+      <span class="text-xl font-bold text-primary">Harshit Engineering Works</span>
+      <button id="closeMenuBtn" class="text-gray-700 dark:text-gray-300">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+    </div>
+    <div class="p-6 space-y-6">
+      <a href="#home" class="block text-lg font-medium hover:text-primary transition">Home</a>
+      <a href="#products" class="block text-lg font-medium hover:text-primary transition">Products</a>
+      <a href="#features" class="block text-lg font-medium hover:text-primary transition">Features</a>
+      <a href="#testimonials" class="block text-lg font-medium hover:text-primary transition">Testimonials</a>
+      <a href="#contact" class="block text-lg font-medium hover:text-primary transition">Contact</a>
+      <div class="pt-6 space-y-4">
+        <button id="mobileLoginBtn" class="w-full bg-primary text-white px-6 py-3 rounded-full hover:bg-red-800 transition">
+          <i class="fas fa-sign-in-alt mr-2"></i>Login
+        </button>
+        <button id="mobileDashboardBtn" class="w-full hidden bg-secondary text-gray-900 dark:text-white px-6 py-3 rounded-full hover:bg-yellow-500 transition">
+          <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+        </button>
+        <button id="mobileLogoutBtn" class="w-full hidden bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-900 transition">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 bg-dark bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all">
+    <div class="glass-panel dark:bg-slate-900/90 dark:border-slate-700 rounded-2xl shadow-glass-strong max-w-md w-full p-8 animate-slide-up">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold gradient-text">Welcome Back!</h2>
+        <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-300">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <form id="emailLoginForm" class="space-y-4 mb-6">
+        <div>
+          <label for="loginEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+          <input type="email" id="loginEmail" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+        </div>
+        <div>
+          <label for="loginPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+          <input type="password" id="loginPassword" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-800 transition transform hover:scale-[1.01]">
+          Sign In <i class="fas fa-sign-in-alt ml-2"></i>
+        </button>
+      </form>
+      
+      <div class="text-center mb-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300 dark:border-slate-600"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-2 bg-white dark:bg-slate-800 text-gray-500">Or continue with</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <button id="googleLoginBtn" class="flex items-center justify-center bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-300 px-4 py-3 rounded-lg hover:bg-gray-50 dark:bg-slate-900 transition transform hover:scale-105">
+          <i class="fab fa-google text-red-600 mr-2"></i> Google
+        </button>
+        <button id="facebookLoginBtn" class="flex items-center justify-center bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105">
+          <i class="fab fa-facebook-f mr-2"></i> Facebook
+        </button>
+      </div>
+      
+      <div class="text-center">
+        <button id="demoLoginBtn" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition transform hover:scale-[1.01] animate-pulse-slow">
+          <i class="fas fa-rocket mr-2"></i> Try Demo Account
+        </button>
+        <p class="text-sm text-gray-500 mt-2">Experience all features with pre-loaded data</p>
+      </div>
+      
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">Don't have an account? 
+          <button id="showRegisterBtn" class="text-primary font-medium hover:underline">Sign up here</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="fixed inset-0 bg-dark bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all">
+    <div class="glass-panel dark:bg-slate-900/90 dark:border-slate-700 rounded-2xl shadow-glass-strong max-w-md w-full p-8 animate-slide-up">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold gradient-text">Create Account</h2>
+        <button id="closeRegisterModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-300">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <form id="registerForm" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="registerName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+            <input type="text" id="registerName" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+          </div>
+          <div>
+            <label for="registerCompany" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Company</label>
+            <input type="text" id="registerCompany" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+          </div>
+        </div>
+        <div>
+          <label for="registerEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+          <input type="email" id="registerEmail" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+        </div>
+        <div>
+          <label for="registerPhone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+          <input type="tel" id="registerPhone" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+        </div>
+        <div>
+          <label for="registerPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+          <input type="password" id="registerPassword" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-800 transition transform hover:scale-[1.01]">
+          Create Account <i class="fas fa-user-plus ml-2"></i>
+        </button>
+      </form>
+      
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">Already have an account? 
+          <button id="showLoginBtn" class="text-primary font-medium hover:underline">Sign in here</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Dashboard Modal -->
+  <div id="dashboardModal" class="fixed inset-0 bg-dark bg-opacity-70 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all">
+    <div class="glass-panel dark:bg-slate-900/90 dark:border-slate-700 rounded-2xl shadow-glass-strong max-w-4xl w-full p-8 animate-slide-up max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold gradient-text">User Dashboard</h2>
+        <button id="closeDashboardModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-300">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- User Info -->
+      <div class="bg-gradient-to-r from-primary to-secondary p-6 rounded-xl text-white mb-6">
+        <div class="flex items-center">
+          <div id="dashboardUserAvatarContainer" class="bg-white dark:bg-slate-800 w-16 h-16 rounded-full flex items-center justify-center mr-4 overflow-hidden shrink-0">
+            <i id="dashboardUserAvatarIcon" class="fas fa-user-cog text-primary text-2xl"></i>
+            <img id="dashboardUserAvatarImg" src="" alt="User Avatar" class="w-full h-full object-cover hidden">
+          </div>
+          <div>
+            <h3 id="dashboardUserName" class="text-xl font-bold">Welcome, User!</h3>
+            <p id="dashboardUserEmail" class="opacity-90">user@example.com</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dashboard Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gray-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-slate-700 animate-fade-in">
+          <div class="flex items-center">
+            <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+              <i class="fas fa-shopping-cart text-primary text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Active Quotes</p>
+              <p id="activeQuotes" class="text-2xl font-bold">3</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-slate-700 animate-fade-in" style="animation-delay: 0.1s">
+          <div class="flex items-center">
+            <div class="bg-secondary bg-opacity-10 p-3 rounded-full mr-4">
+              <i class="fas fa-cog text-secondary text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Machines Viewed</p>
+              <p id="machinesViewed" class="text-2xl font-bold">12</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-slate-700 animate-fade-in" style="animation-delay: 0.2s">
+          <div class="flex items-center">
+            <div class="bg-green-500 bg-opacity-10 p-3 rounded-full mr-4">
+              <i class="fas fa-calendar-check text-green-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Support Tickets</p>
+              <p id="supportTickets" class="text-2xl font-bold">2</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Activity -->
+      <div class="bg-gray-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-slate-700 mb-6 animate-fade-in" style="animation-delay: 0.3s">
+        <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
+        <div id="recentActivityContainer" class="space-y-4">
+          <!-- Dynamic activity items will be inserted here by JS -->
+          <p class="text-gray-500 text-sm">Loading activity...</p>
+        </div>
+      </div>
+      
+      <!-- Quick Actions -->
+      <div class="grid md:grid-cols-2 gap-4">
+        <button id="newQuoteBtn" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-red-800 transition transform hover:scale-105 flex items-center justify-center">
+          <i class="fas fa-plus-circle mr-2"></i> New Quote Request
+        </button>
+        <button id="supportBtn" class="bg-secondary text-gray-900 dark:text-white px-6 py-3 rounded-lg hover:bg-yellow-500 transition transform hover:scale-105 flex items-center justify-center">
+          <i class="fas fa-headset mr-2"></i> Contact Support
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center parallax relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1602311865240-514c6b25d517?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+    <div id="ambient-glow"></div>
+    <div class="hero-gradient absolute inset-0"></div>
+    
+    <!-- Animated Floating Elements -->
+    <div class="floating-element absolute top-20 left-10 text-4xl text-secondary opacity-30 animate-float">
+      <i class="fas fa-cog"></i>
+    </div>
+    <div class="floating-element absolute bottom-32 right-20 text-5xl text-white opacity-20 animate-float" style="animation-delay: 1s">
+      <i class="fas fa-industry"></i>
+    </div>
+    <div class="floating-element absolute top-40 right-32 text-3xl text-secondary opacity-30 animate-float" style="animation-delay: 2s">
+      <i class="fas fa-tools"></i>
+    </div>
+    
+    <div class="container mx-auto px-4 text-center relative z-10 animate-fade-in">
+      <div class="mb-8">
+        <span class="bg-white dark:bg-slate-800 bg-opacity-20 text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse-slow">
+          <i class="fas fa-bolt mr-1"></i> Since 1993
+        </span>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 typewriter">
+        Industrial <span class="text-secondary">Rubber Mixers</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto animate-slide-up">
+        Precision-engineered mixing solutions for rubber, polymer, and elastomer processing industries
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up" style="animation-delay: 0.2s">
+        <a href="#products" data-magnetic class="ripple-btn magnetic-btn bg-secondary text-gray-900 dark:text-white font-semibold px-8 py-4 rounded-full hover:bg-yellow-500 transition transform hover:scale-105 glow">
+          Explore Products <i class="fas fa-arrow-right ml-2 animate-wiggle"></i>
+        </a>
+        <a href="#contact" data-magnetic class="ripple-btn magnetic-btn bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white dark:bg-slate-800 hover:text-gray-900 dark:text-white transition transform hover:scale-105">
+          Get Quote <i class="fas fa-phone ml-2 animate-bounce-slow"></i>
+        </a>
+      </div>
+      
+      <!-- Animated Stats -->
+      <div class="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1 animate-count" data-target="30">0</div>
+          <div class="text-gray-300 text-sm">Years Experience</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1 animate-count" data-target="500">0</div>
+          <div class="text-gray-300 text-sm">Machines Installed</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-white mb-1 animate-count" data-target="25">0</div>
+          <div class="text-gray-300 text-sm">Countries Served</div>
+        </div>
+      </div>
+    </div>
+    
+    <a href="#products" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white">
+      <div class="relative">
+        <div class="pulse-ring absolute inset-0 rounded-full bg-secondary opacity-20"></div>
+        <i class="fas fa-chevron-down text-2xl relative z-10"></i>
+      </div>
+    </a>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="deferred-section py-16 bg-white dark:bg-slate-800">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6 animate-fade-in" data-delay="100">
+          <div class="relative inline-block mb-4">
+            <div class="absolute inset-0 bg-primary rounded-full opacity-20 animate-ping"></div>
+            <div class="relative bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+              500+
+            </div>
+          </div>
+          <div class="text-gray-600 dark:text-gray-400 font-medium">Machines Installed</div>
+        </div>
+        <div class="p-6 animate-fade-in" data-delay="200">
+          <div class="relative inline-block mb-4">
+            <div class="absolute inset-0 bg-secondary rounded-full opacity-20 animate-ping" style="animation-delay: 0.5s"></div>
+            <div class="relative bg-secondary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+              30+
+            </div>
+          </div>
+          <div class="text-gray-600 dark:text-gray-400 font-medium">Years Experience</div>
+        </div>
+        <div class="p-6 animate-fade-in" data-delay="300">
+          <div class="relative inline-block mb-4">
+            <div class="absolute inset-0 bg-primary rounded-full opacity-20 animate-ping" style="animation-delay: 1s"></div>
+            <div class="relative bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+              25+
+            </div>
+          </div>
+          <div class="text-gray-600 dark:text-gray-400 font-medium">Countries Served</div>
+        </div>
+        <div class="p-6 animate-fade-in" data-delay="400">
+          <div class="relative inline-block mb-4">
+            <div class="absolute inset-0 bg-secondary rounded-full opacity-20 animate-ping" style="animation-delay: 1.5s"></div>
+            <div class="relative bg-secondary text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">
+              24/7
+            </div>
+          </div>
+          <div class="text-gray-600 dark:text-gray-400 font-medium">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="deferred-section py-20 bg-gray-50 dark:bg-slate-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
+          Our <span class="text-primary">Product</span> Range
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto animate-fade-in" data-delay="100">
+          High-efficiency mixers, downstream rubber machinery, and dependable spare parts for industrial production
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div class="perspective-wrapper">
+          <div data-tilt class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="200">
+            <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/internal-mixer.jpg" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Internal Mixer">
+<div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-fire mr-1"></i> Hot
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Internal Rubber Mixer</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Advanced batch processing with precise temperature and torque control.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('internal-mixer')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('internal-mixer')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+        
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="300">
+            <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/kneader.jpg" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Kneader Mixer">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-fire mr-1"></i> Reliable
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Kneader Mixer</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Specialized design for high-viscosity elastomer and polymer blending.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('kneader-mixer')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('kneader-mixer')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="400">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/twin_screw_extruder_1779211891224.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Extruder">
+<div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-star mr-1"></i> Popular
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Twin-Screw Extruder</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">High-performance extrusion for efficient shaping of rubber materials.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('twin-screw-extruder')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('twin-screw-extruder')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="500">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/mixing_mill_1779211907773.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Mixing Mill">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-plus-circle mr-1"></i> New
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Mixing Mill</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Reliable sheeting, warming, and mastication for precise rubber compound preparation.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('mixing-mill')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('mixing-mill')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="600">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/rubber_calender_1779211924384.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Rubber Calender">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-star mr-1"></i> Popular
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Rubber Calender</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Precision roll processing for consistent sheet thickness, coating, and surface finish.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('rubber-calender')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('rubber-calender')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="700">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/batch_off_cooling_line_1779211941300.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Batch Off Cooling Line">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-shield-alt mr-1"></i> Efficient
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Batch Off Cooling Line</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Smooth post-mixing cooling, anti-tack treatment, and stacking for cleaner production flow.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('batch-off-cooling-line')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('batch-off-cooling-line')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="800">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/rubber_strainer_1779211955607.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Rubber Strainer">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-check-circle mr-1"></i> Clean Output
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Rubber Strainer</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Continuous impurity removal before extrusion and molding for better compound quality.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('rubber-strainer')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('rubber-strainer')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="900">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/banbury_mixer_1779211970330.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Banbury Mixer">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-fire mr-1"></i> Heavy Duty
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Banbury Mixer</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">High-intensity internal mixing for rubber compounds with reliable dispersion, temperature control, and batch consistency.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('banbury-mixer')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('banbury-mixer')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="1000">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/hydraulic_rubber_press_1779212050346.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Hydraulic Rubber Press">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-industry mr-1"></i> Production
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Hydraulic Rubber Press</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Robust pressing solutions for molding, vulcanizing, and shaping rubber components with stable pressure control.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('hydraulic-rubber-press')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('hydraulic-rubber-press')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="1100">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/special_purpose_machine_1779212064221.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Special Purpose Machine">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-star mr-1"></i> Custom Built
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Special Purpose Machine</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Custom-engineered rubber processing machines tailored for unique production needs, automation levels, and layouts.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('special-purpose-machine')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('special-purpose-machine')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="1200">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/repair_machine_1779212833951.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Repair Machine">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-wrench mr-1"></i> Support
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Repair Machine</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Efficient rubber repair and rework solutions for restoring damaged components and reducing production losses.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('repair-machine')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('repair-machine')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md card-hover transition-all duration-300 animate-slide-up h-full" data-delay="1300">
+          <div class="relative overflow-hidden rounded-lg h-48 mb-6">
+            <img src="img/spare_parts_1779212847388.png" loading="lazy" decoding="async" fetchpriority="low" width="320" height="192" class="w-full h-full object-cover transition duration-500 hover:scale-110" alt="Spare Parts">
+            <div class="absolute top-4 right-4 bg-black bg-opacity-30 text-white px-3 py-1 rounded-full text-sm">
+              <i class="fas fa-box-open mr-1"></i> Ready Stock
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Spare Parts</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">Genuine rubber machine spare parts for quick replacement, dependable maintenance, and longer equipment life.</p>
+          <div class="flex justify-between items-center">
+            <a href="#contact" onclick="window.selectProduct('spare-parts')" class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-red-800 transition transform hover:scale-105">
+              Enquire Now
+            </a>
+            <button class="text-primary hover:text-red-800 transition" onclick="showProductDetails('spare-parts')">
+              <i class="fas fa-info-circle text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="deferred-section py-24 bg-gray-50 dark:bg-slate-900 relative overflow-hidden">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="text-center mb-20">
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 animate-fade-in">
+          Advanced <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-red-600">Features</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto animate-fade-in" data-delay="100">
+          Innovative technologies and premium engineering that set our machines apart
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-primary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="200">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-primary w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Precision Control</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Advanced touchscreen interfaces and smart technology for complete, highly accurate process control.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-secondary/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="300">
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-secondary w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-secondary group-hover:text-gray-900 dark:text-white group-hover:scale-110 group-hover:-rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors duration-300">Energy Efficient</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Optimized designs reduce power consumption by up to 30% compared to conventional mixers.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-primary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="400">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-primary w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Safety Systems</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Multiple safety interlocks and emergency stop systems for operator protection.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-secondary/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="500">
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-secondary w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-secondary group-hover:text-gray-900 dark:text-white group-hover:scale-110 group-hover:-rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors duration-300">Automation Ready</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Effortlessly integrate our machinery into your existing workflows for fully automated and streamlined operations.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-primary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="600">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-primary w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">Cost Reduction</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Implement strategic cost-saving measures to minimize operational expenses and improve overall production efficiency.</p>
+          </div>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="group bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 hover:border-secondary/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 animate-slide-up relative overflow-hidden" data-delay="700">
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="text-secondary w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-3xl mb-6 group-hover:bg-secondary group-hover:text-gray-900 dark:text-white group-hover:scale-110 group-hover:-rotate-12 transition-all duration-500 shadow-inner">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors duration-300">Customizable</h3>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Flexible designs built specifically to match your exact manufacturing processes and material needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="deferred-section py-20 bg-gray-50 dark:bg-slate-900">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
+          Client <span class="text-primary">Testimonials</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto animate-fade-in" data-delay="100">
+          What our customers say about our products
+        </p>
+      </div>
+      
+      <div id="testimonialsList" class="hidden grid md:grid-cols-2 xl:grid-cols-3 gap-8"></div>
+
+      <div id="testimonialsFallback" class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-md hover:shadow-xl transition animate-slide-up" data-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">"The Harshit Engineering Works internal mixer has transformed our production process with its consistent performance and low maintenance."</p>
+          <div class="flex items-center">
+            <div class="bg-gray-200 w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" loading="lazy" decoding="async" fetchpriority="low" width="48" height="48" alt="Client" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-semibold">Rajesh Patel</h4>
+              <p class="text-sm text-gray-500">ABC Rubber Industries</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-md hover:shadow-xl transition animate-slide-up" data-delay="300">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">"Excellent after-sales support and the machines have exceeded our expectations in terms of durability and performance."</p>
+          <div class="flex items-center">
+            <div class="bg-gray-200 w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" loading="lazy" decoding="async" fetchpriority="low" width="48" height="48" alt="Client" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-semibold">Priya Sharma</h4>
+              <p class="text-sm text-gray-500">XYZ Polymer Solutions</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-md hover:shadow-xl transition animate-slide-up" data-delay="400">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 mr-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">"We've reduced our energy costs by 25% after switching to Harshit Engineering Works equipment while increasing output quality."</p>
+          <div class="flex items-center">
+            <div class="bg-gray-200 w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" loading="lazy" decoding="async" fetchpriority="low" width="48" height="48" alt="Client" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-semibold">Amit Kumar</h4>
+              <p class="text-sm text-gray-500">Elasto Tech Ltd.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 max-w-5xl mx-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-gray-100 dark:border-slate-700 p-8 md:p-10">
+          <div class="md:flex md:items-start md:justify-between gap-8 mb-8">
+            <div class="max-w-2xl">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Share Your Experience</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Real client comments submitted here will automatically appear in the testimonials section above.
+              </p>
+            </div>
+            <div class="mt-4 md:mt-0 rounded-full bg-red-50 dark:bg-primary/20 text-primary dark:text-red-400 px-4 py-2 text-sm font-medium">
+              Live customer feedback
+            </div>
+          </div>
+
+          <form id="testimonialForm" class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="testimonialName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name *</label>
+              <input type="text" id="testimonialName" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+            </div>
+            <div>
+              <label for="testimonialCompany" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Company *</label>
+              <input type="text" id="testimonialCompany" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+            </div>
+            <div>
+              <label for="testimonialRating" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Rating *</label>
+              <select id="testimonialRating" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+                <option value="">Select rating</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <div class="w-full rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 px-4 py-3 text-sm text-gray-600 dark:text-gray-400">
+                Use this section for genuine customer feedback about machine quality, service, and performance.
+              </div>
+            </div>
+            <div class="md:col-span-2">
+              <label for="testimonialComment" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Comment *</label>
+              <textarea id="testimonialComment" rows="5" maxlength="500" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required></textarea>
+            </div>
+            <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <p id="testimonialFormNote" class="text-sm text-gray-500">
+                New testimonials appear here automatically after successful submission.
+              </p>
+              <button type="submit" class="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-800 transition transform hover:scale-[1.01]">
+                Submit Testimonial <i class="fas fa-comment-dots ml-2"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="deferred-section py-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+      <div class="absolute top-10 left-10 text-6xl animate-spin-slow">
+        <i class="fas fa-cog"></i>
+      </div>
+      <div class="absolute bottom-10 right-10 text-8xl animate-spin-slow" style="animation-direction: reverse">
+        <i class="fas fa-industry"></i>
+      </div>
+    </div>
+    
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
+        Ready to Upgrade Your Mixing Process?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto animate-fade-in" data-delay="100">
+        Contact us today for a free consultation and quote
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" data-delay="200">
+        <a href="#contact" class="bg-white dark:bg-slate-800 text-primary font-semibold px-8 py-4 rounded-full hover:bg-gray-100 dark:bg-slate-800 transition transform hover:scale-105 animate-pulse-slow">
+          Get a Free Quote <i class="fas fa-envelope ml-2"></i>
+        </a>
+        <a href="tel:+919811019011" class="bg-transparent border-2 border-white font-semibold px-8 py-4 rounded-full hover:bg-white dark:bg-slate-800 hover:text-primary transition transform hover:scale-105">
+          Call Now: +91-9811019011
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="deferred-section py-20 bg-white dark:bg-slate-800">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
+          Contact <span class="text-primary">Us</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto animate-fade-in" data-delay="100">
+          Get in touch with our sales team for more information
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div class="animate-slide-up">
+          <h3 class="text-2xl font-semibold mb-6">Our Office</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start hover:transform hover:scale-105 transition">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 animate-pulse-slow">
+                <i class="fas fa-phone text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Phone</h4>
+                <p class="text-gray-600 dark:text-gray-400">+91-9811019011</p>
+                <p class="text-gray-600 dark:text-gray-400">+91-9868883132</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start hover:transform hover:scale-105 transition">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 animate-pulse-slow" style="animation-delay: 0.5s">
+                <i class="fas fa-envelope text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Email</h4>
+                <p class="text-gray-600 dark:text-gray-400">harshitengineeringworks@gmail.com</p>
+                <p class="text-gray-600 dark:text-gray-400">rgupta889@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start hover:transform hover:scale-105 transition">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4 animate-pulse-slow" style="animation-delay: 1s">
+                <i class="fas fa-map-marker-alt text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Address</h4>
+                <p class="text-gray-600 dark:text-gray-400">C-41, Adhyapak Nagar</p>
+                <p class="text-gray-600 dark:text-gray-400">Nangloi Najafgarh Road</p>
+                <p class="text-gray-600 dark:text-gray-400">New Delhi - 110041, India</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start hover:transform hover:scale-105 transition">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-full mr-4">
+                <i class="fas fa-clock text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Business Hours</h4>
+                <p class="text-gray-600 dark:text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p class="text-gray-600 dark:text-gray-400">Saturday: 9:00 AM - 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Social Media -->
+          <div class="mt-8">
+            <h4 class="font-semibold mb-4">Follow Us</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:scale-110">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 hover:text-white transition transform hover:scale-110">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 hover:text-white transition transform hover:scale-110">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-600 hover:text-white transition transform hover:scale-110">
+                <i class="fab fa-youtube"></i>
+                <a href="https://www.instagram.com/harshit_engineering_works?utm_source=qr&igsh=ZHY3bTJxMnE2ODE4" class="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-600 hover:text-white transition transform hover:scale-110">
+      <i class="fab fa-instagram"></i>
+    </a>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="animate-slide-up" data-delay="100">
+          <form id="contactForm" class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name *</label>
+                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email *</label>
+                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+              </div>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone *</label>
+              <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required>
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Company</label>
+              <input type="text" id="company" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition">
+            </div>
+            <div>
+              <label for="productInterest" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Product of Interest</label>
+              <select id="productInterest" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition">
+                <option value="">Select a product</option>
+                <option value="internal-mixer">Internal Rubber Mixer</option>
+                <option value="kneader-mixer">Kneader Mixer</option>
+                <option value="twin-screw-extruder">Twin-Screw Extruder</option>
+                <option value="mixing-mill">Mixing Mill</option>
+                <option value="banbury-mixer">Banbury Mixer</option>
+                <option value="rubber-calender">Rubber Calender</option>
+                <option value="batch-off-cooling-line">Batch Off Cooling Line</option>
+                <option value="hydraulic-rubber-press">Hydraulic Rubber Press</option>
+                <option value="special-purpose-machine">Special Purpose Machine</option>
+                <option value="rubber-strainer">Rubber Strainer</option>
+                <option value="repair-machine">Repair Machine</option>
+                <option value="spare-parts">Spare Parts</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-primary dark:bg-slate-900 dark:text-white outline-none transition" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-800 transition transform hover:scale-[1.01]">
+              Send Message <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 flex items-center">
+            <svg class="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+            Harshit Engineering Works
+          </h3>
+          <p class="text-gray-400 mb-4">Premium rubber mixing solutions since 1993. Quality, reliability, and innovation in every machine.</p>
+          <div class="flex space-x-3">
+            <div class="bg-gray-800 p-2 rounded-full">
+              <i class="fas fa-award text-secondary"></i>
+            </div>
+            <div class="bg-gray-800 p-2 rounded-full">
+              <i class="fas fa-certificate text-secondary"></i>
+            </div>
+            <div class="bg-gray-800 p-2 rounded-full">
+              <i class="fas fa-medal text-secondary"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Products</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Our Products</h4>
+          <ul class="space-y-2">
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Internal Mixers</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Kneader Mixers</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Twin-Screw Extruders</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Mixing Mills</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Banbury Mixers</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Hydraulic Rubber Presses</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Special Purpose Machines</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Repair Machines</a></li>
+            <li><a href="#products" class="text-gray-400 hover:text-white transition">Spare Parts</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+          <p class="text-gray-400 mb-4">Subscribe to get updates on new products and offers.</p>
+          <form id="newsletterForm" class="flex">
+            <input type="email" id="newsletterEmail" placeholder="Your email" class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-l-lg outline-none" required>
+            <button type="submit" id="newsletterBtn" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-red-800 transition">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <div class="mt-6">
+            <p class="text-gray-400 mb-2">ISO 9001:2015 Certified</p>
+            <p class="text-gray-400">Member of Indian Rubber Manufacturers Association</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
+        <p>&copy; 1993 - <span id="currentYear"></span> Harshit Engineering Works. All rights reserved.</p>
+        <p class="mt-2">C-41, Adhyapak Nagar, Nangloi Najafgarh Road, New Delhi - 110041</p>
+        <p class="mt-2">Phone: +91-9811019011, +91-9868883132 | Email: harshitengineeringworks@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase Configuration -->
+  <script defer src="js/firebase-app.js"></script>
+
+  <!-- Main JavaScript -->
+  <script defer src="js/main.js"></script>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919811019011" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-[#128C7E] hover:scale-110 transition-all z-50 animate-bounce">
+    <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- Auto-select product in contact form -->
+  <script>
+    window.selectProduct = function(productId) {
+      const select = document.getElementById('productInterest');
+      if (select) {
+        select.value = productId;
+        // Trigger both change and input events to ensure UI updates
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    };
+
+    (function() {
+      // Direct onclick binding to all static Enquire buttons
+      const wrappers = document.querySelectorAll('#products .perspective-wrapper');
+      wrappers.forEach(wrapper => {
+        const enquireBtn = wrapper.querySelector('a[href="#contact"]');
+        const infoBtn = wrapper.querySelector('button[onclick^="showProductDetails"]');
+        if (enquireBtn && infoBtn) {
+          const match = infoBtn.getAttribute('onclick').match(/'([^']+)'/);
+          if (match && match[1]) {
+            enquireBtn.onclick = function() {
+              window.selectProduct(match[1]);
+            };
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
