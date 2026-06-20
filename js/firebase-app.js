@@ -1,12 +1,13 @@
 // Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDPPj8h5gUX26u1i0if5kJRrz9SviKlAgE",
-  authDomain: "harshit-engineering-work-efd27.firebaseapp.com",
-  projectId: "harshit-engineering-work-efd27",
-  storageBucket: "harshit-engineering-work-efd27.firebasestorage.app",
-  messagingSenderId: "1250561178",
-  appId: "1:1250561178:web:e4afa1c0321ac030432323",
-  measurementId: "G-B1SEWFNG23"
+  apiKey: "AIzaSyDeqTtV1J3PMg0TOwQ80tgoZN25noneKcE",
+  authDomain: "harshit-engineering-work-9ffc5.firebaseapp.com",
+  projectId: "harshit-engineering-work-9ffc5",
+  storageBucket: "harshit-engineering-work-9ffc5.firebasestorage.app",
+  messagingSenderId: "907079045554",
+  appId: "1:907079045554:web:b7fa82faf3816c59c194ab",
+  measurementId: "G-P1H46VSFGW"
 };
 
 // Initialize Firebase only once so deferred or repeated loads stay safe.
